@@ -4,14 +4,14 @@
 
 
 body {
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    background: rgb(195,182,34);
+    background: linear-gradient(0deg, rgba(195,182,34,1) 0%, rgba(34,193,195,1) 100%);
     margin: 100px;
     font-family: 'Playfair Display', serif;
 }
 
 header {
-    background-color: #0d6743;
+    background-color: rgba(34,193,195,1);
     padding: 2em;
     text-align: center;
     color: white;
