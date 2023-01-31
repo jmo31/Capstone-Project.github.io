@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto+Slab:wght@200&display=swap');
+
+body {
+    background-color: ghostwhite;
+    margin: 100px;
+    font-family: 'Playfair Display', serif;
+}
+
+header {
+    background-color: #0d6743;
+    padding: 2em;
+    text-align: center;
+    color: white;
+}
+.logo {
+
+    width: 250px;
+    height: 125px;
+}
+
+nav {
+    list-style: none;
+    display: flex;
+}
+.bar h1 {
+    padding-top: 25px;
+    margin-right: 300px;
+}
+#logo {
+    /* padding-top: 15px; */
+    margin-right: 30px;
+    margin-right: auto;
+    float: left;
+}
+header nav a {
+    justify-content: space-between;
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.4em;
+    margin-left: 10px;
+    color: white;
+}
+main {
+    margin-left: 10px;
+}
+h1,h2,h3 {
+    text-align: center;
+}
+footer {
+    background-color: #0d6743;
+    text-align: center;
+    padding: 16px 20px;
+    padding: 2em;
+}
+footer nav a {
+    justify-content: space-between;
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.4em;
+    color: white;
+    margin-left: 10px;
+}
+.image{
+    text-align: center;
+}
