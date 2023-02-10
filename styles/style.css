@@ -10,27 +10,21 @@
   }
 
 body {
-    /* background: rgb(195,182,34);
-    background: linear-gradient(0deg, rgba(195,182,34,1) 0%, rgba(34,193,195,1) 100%); */
+    
     background-color: #D7CEC7;
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
     font-family: 'Playfair Display', serif;
+    
 }
 
-/* header {
-    background-color: rgba(34,193,195,1);
-    padding: 2em;
-    text-align: center;
-    color: white;
-} */
+
 nav {
-    padding: 1rem;
+    padding: 0.5rem;
     color: white;
     background-color: rgb(0, 66, 30);
-    /* display: flex;
-    flex-direction: column; */
+
     gap: 1rem;
   }
 .logo {
@@ -85,19 +79,8 @@ footer {
     text-decoration: none;
     
 }
-/* footer nav a {
-    justify-content: space-between;
-    display: inline-block;
-    text-decoration: none;
-    padding: 0.4em;
-    color: white;
-    margin-left: 10px;
-}*/
 
 
-/* .image{
-    text-align: center;
-} */
 button {
     background-color: #0d6743;
     color: white;
