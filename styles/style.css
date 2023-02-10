@@ -48,7 +48,7 @@ nav {
     margin-right: 300px;
 }
 #logo {
-    /* padding-top: 15px; */
+     padding-top: 15px; 
     margin-right: 30px;
     margin-right: auto;
     float: left;
@@ -67,7 +67,7 @@ main {
 h1,h2,h3 {
     text-align: center;
 }
-footer {
+/*footer {
     background-color: #0d6743;
     text-align: center;
     padding: 16px 20px;
@@ -80,6 +80,7 @@ footer {
     padding: 0.4em;
     color: white;
     margin-left: 10px;
+<<<<<<< HEAD
 } */
 
 footer {
@@ -88,6 +89,9 @@ footer {
     text-align: center;
     padding: 1rem;
 }
+=======
+}*/
+>>>>>>> f56f19c6e818b40249de2e8c78f75bda9289b8ee
 .image{
     text-align: center;
 }
