@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gaming Website</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <script src="../scripts/HTMLInclude.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Gaming Website</h1>
+      <div data-include="components/header.html"></div>
+    </header>
+    <main>
+        <form action="/search" method="get" style="float:right;">
+            <input type="text" name="q" placeholder="Search...">
+            <!--<button type="submit">Search</button>-->
+          </form>
+      <section class="featured">
+        <h2>Featured Game</h2>
+        <article>
+          <img src="game-image.jpg" alt="Game Image">
+          <h3>Game Title</h3>
+          <p>Description of the featured game.</p>
+        </article>
+      </section>
+      <section class="games">
+        <h2>Latest Games</h2>
+        <article>
+          <img src="game-image.jpg" alt="Game Image">
+          <h3>Game Title</h3>
+          <p>Description of the game.</p>
+        </article>
+        <article>
+          <img src="game-image.jpg" alt="Game Image">
+          <h3>Game Title</h3>
+          <p>Description of the game.</p>
+        </article>
+        <article>
+          <img src="game-image.jpg" alt="Game Image">
+          <h3>Game Title</h3>
+          <p>Description of the game.</p>
+        </article>
+      </section>
+      <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const query = form.querySelector('input[name="q"]').value;
+        window.location.href = '/search?q=' + encodeURIComponent(query);
+        });
+      </script>
+    </main>
+    <footer>
+        <div data-include="components/footer.html"></div>
+    </footer>
+  </body>
+</html>
