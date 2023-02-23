@@ -30,6 +30,7 @@ app.post("/", encoder, function(req,res){
     connection.query("select * from userlogin where user_name = ? and user_pass = ?",[username,password],function(error,results,fields){
         if (results.length > 0){
             res.redirect("/views/index.html");
+            alert("Hello! I am an alert box!!");
         }else{
             res.redirect("/");
         }
