@@ -1,49 +1,72 @@
-const mysql = require("mysql");
-
-const express = require("express");
-const bodyParser = require("body-parser");
-const app = express();
-const encoder = bodyParser.urlencoded();
+const mysql = require('mysql');
+const express = require('express');
+const session = require('express-session');
+const path = require('path');
 
 const connection = mysql.createConnection({
-host: "localhost",
-user: "root",
-password: "capstone",
-database:"nodejs"
+	host     : 'localhost',
+	user     : 'root',
+	password : 'capstone',
+	database : 'nodejs'
 });
 
-connection.connect(function(error){
+const app = express();
 
-    if (error) throw error
-    else console.log("Connected successfully to the ")
-})
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'static')));
 
-app.get("/", function(req,res){
-
-    res.sendFile(__dirname+"/views/login.html")
-
-})
-
-app.post("/", encoder, function(req,res){
-    var username = req.body.username;
-    var password = req.body.password;
-    connection.query("select * from userlogin where user_name = ? and user_pass = ?",[username,password],function(error,results,fields){
-        if (results.length > 0){
-            res.redirect("/views/index.html");
-            alert("Hello! I am an alert box!!");
-        }else{
-            res.redirect("/views/register.html");
-        }
-        res.end();
-
-    });
-})
-
-app.get("/views/index.html", function(req,res){
-
-    res.sendFile(__dirname+"/views/index.html");
-})
+// http://localhost:3000/
+app.get('/', function(request, response) {
+	// Render login template
+	response.sendFile(path.join(__dirname + '/views/login.html'));
+});
 
 
+app.post('/', function(request, response) {
+	// Capture the input fields
+	let username = request.body.useremail;
+	let password = request.body.userpass;
+	// Ensure the input fields exists and are not empty
+	if (username && password) {
+		// Execute SQL query that'll select the account from the database based on the specified username and password
+		connection.query('SELECT * FROM userlogin WHERE user_name = ? AND user_pass = ?', [username, password], function(error, results, fields) {
+			// If there is an issue with the query, output the error
+			if (error) throw error;
+			// If the account exists
+			if (results.length > 0) {
+				// Authenticate the user
+				request.session.loggedin = true;
+				request.session.username = username;
+				// Redirect to home page
+                
+				response.redirect('/views/index.html');
+			} else {
+				response.send('Incorrect Username and/or Password!');
+			}			
+			response.end();
+		});
+	} else {
+		response.send('Please enter Username and Password!');
+		response.end();
+	}
+});
 
-app.listen(4000);
+app.get('/views/index.html', function(request, response) {
+	// If the user is loggedin
+	if (request.session.loggedin) {
+		// Output username
+		response.send('Welcome back, ' + request.session.username + '!');
+	} else {
+		// Not logged in
+		response.send('Please login to view this page!');
+	}
+	response.end();
+});
+
+app.listen(3000);
