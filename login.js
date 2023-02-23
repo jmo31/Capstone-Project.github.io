@@ -32,7 +32,7 @@ app.post("/", encoder, function(req,res){
             res.redirect("/views/index.html");
             alert("Hello! I am an alert box!!");
         }else{
-            res.redirect("/");
+            res.redirect("/views/register.html");
         }
         res.end();
 
