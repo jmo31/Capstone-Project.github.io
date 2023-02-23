@@ -1,7 +1,27 @@
 {
   "dependencies": {
+    "body-parser": "^1.20.2",
     "expess": "^0.0.1-security",
+    "express": "^4.18.2",
     "flask": "^0.2.10",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.20"
-  }
+  },
+  "name": "capstone-project",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmo31/Capstone-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmo31/Capstone-Project/issues"
+  },
+  "homepage": "https://github.com/jmo31/Capstone-Project#readme",
+  "description": ""
 }
