@@ -27,7 +27,7 @@ app.get('/', function(request, response) {
 	response.sendFile(path.join(__dirname + '/views/login.html'));
 });
 
-// http://localhost:3000/auth
+
 app.post('/', function(request, response) {
 	// Capture the input fields
 	let username = request.body.useremail;
@@ -57,8 +57,7 @@ app.post('/', function(request, response) {
 	}
 });
 
-// http://localhost:3000/home
-app.get('/index.html', function(request, response) {
+app.get('/views/index.html', function(request, response) {
 	// If the user is loggedin
 	if (request.session.loggedin) {
 		// Output username
