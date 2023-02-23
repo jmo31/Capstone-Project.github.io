@@ -9,6 +9,10 @@
       <h1>Gaming Website</h1>
     </header>
     <main>
+        <form action="/search" method="get" style="float:right;">
+            <input type="text" name="q" placeholder="Search...">
+            <!--<button type="submit">Search</button>-->
+          </form>
       <section class="featured">
         <h2>Featured Game</h2>
         <article>
@@ -35,9 +39,17 @@
           <p>Description of the game.</p>
         </article>
       </section>
+      <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const query = form.querySelector('input[name="q"]').value;
+        window.location.href = '/search?q=' + encodeURIComponent(query);
+        });
+      </script>
     </main>
     <footer>
-      <p>&copy; 2023 Cool Gaming Website. All rights reserved.</p>
+      <p>&copy; 2023 Gaming Website. All rights reserved.</p>
     </footer>
   </body>
 </html>
