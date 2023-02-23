@@ -11,22 +11,16 @@
     <div data-include="components/header.html"></div>
     <main>
         <h2>Registration form</h2>
-        <form action=”#”>
+        <form method="post"> 
          <label for="name">Name</label><br>
         <input type="text" id="name" name="name" required><br>
         <label for="email">Email</label><br>
         <input type="email" id="email" name="email"><br>
         <label for="password">Password</label><br>
         <input type="password" id="password" name="password"><br>
-        <input type="submit" value="Register">
+        <input type="submit" name="submit" value="Register">
     </form>
     </main>
-    <nav>
-    <a href="index.html">Home</a> <span class="nav-spacing">||</span>
-    <a href="about.html">About</a> <span class="nav-spacing">||</span>
-    <a href="login.html">Login</a> <span class="nav-spacing">||</span>
-    <a href="survey_page.html">Personalized Survey</a> <span class="nav-spacing">||</span>
-</nav>
     <div data-include="components/footer.html"></div>
  <script src="../scripts/HTMLInclude.js"></script>
     
