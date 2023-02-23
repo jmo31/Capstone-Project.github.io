@@ -3,14 +3,11 @@
   <head>
     <title>Gaming Website</title>
     <link rel="stylesheet" href="../styles/style.css">
-    <script src="../scripts/HTMLInclude.js"></script>
+    
   </head>
   <body>
-    <header>
-      <h1>Gaming Website</h1>
-      <div data-include="components/header.html"></div>
-    </header>
     <main>
+        <div data-include="components/header.html"></div>
         <form action="/search" method="get" style="float:right;">
             <input type="text" name="q" placeholder="Search...">
             <!--<button type="submit">Search</button>-->
@@ -41,6 +38,13 @@
           <p>Description of the game.</p>
         </article>
       </section>
+      <div data-include="components/footer.html"></div>
+      <script src="../scripts/HTMLInclude.js"></script>   
+      <nav>
+      <a href="index.html">Home</a> <span class="nav-spacing">||</span>
+      <a href="about.html">About</a> <span class="nav-spacing">||</span>
+      <a href="login.html">Login</a> <span class="nav-spacing">||</span>
+      <a href="survey_page.html">Personalized Survey</a> <span class="nav-spacing">||</span>
       <script>
         const form = document.querySelector('form');
         form.addEventListener('submit', (event) => {
@@ -50,8 +54,5 @@
         });
       </script>
     </main>
-    <footer>
-        <div data-include="components/footer.html"></div>
-    </footer>
   </body>
 </html>
