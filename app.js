@@ -1,76 +1,60 @@
-
-const express = require('express');
-const { v4: uuidv4 } = require('uuid');
-const morgan = require('morgan');
-const ejs = require('ejs');
-
-const app = express();
-let port = 3000;
-let host = 'localhost';
-
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var expressValidator = require('express-validator');
+var flash = require('express-flash');
+var session = require('express-session');
+var bodyParser = require('body-parser');
+ 
+ 
+var mysql = require('mysql');
+var connection  = require('/lib/db');
+ 
+var authRouter = require('/routes/auth');
+ 
+var app = express();
+ 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-let students = [
-    { id: '1', name: 'Alice', major: 'Computer Science', gpa: 3.5},
-    { id: '2', name: 'Bob', major: 'Biology', gpa: 3.2 },
-    { id: '3', name: 'Charlie', major: 'Physics', gpa: 3.0}
-];
-
-app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }));
-
-app.use(morgan('tiny'));
-
-app.get('/', (req, res) => {
-    res.sendFile('./views/index.html', { root: __dirname });
+ 
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+ 
+app.use(session({ 
+    secret: 'bean6machine',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 }
+}))
+ 
+app.use(flash());
+app.use(expressValidator());
+ 
+app.use('/auth', authRouter);
+ 
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
 });
-
-// app.get('/students', (req, res) => {
-//    res.json(students);
-  
-// });
-app.get('/students', (req, res) => {
-    
-    res.render('students', {
-        students:students
-    });
+ 
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+ 
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
-
-app.post('/students', (req, res) => {
-   // console.log(req.body);
-    let student = req.body;
-    student.id = uuidv4();
-    students.push(student);
-    res.redirect('/students');
-
+// port must be set to 3000 because incoming http requests are routed from port 80 to port 8080
+app.listen(3000, function () {
+    console.log('Node app is running on port 3000');
 });
-
-app.get('/students/create', (req, res) => {
-    res.sendFile('./views/register.html', { root: __dirname });
-});
-
-app.get('/students/:sid', (req, res) => {
-    let id = req.params.sid;
-     let student = students.find(element => element.id === id);
-    res.render('student', {student: student});
-});
-
-app.get('/about', (req, res) => {
-    res.send('About page');
-});
-
-app.get('/contact', (req, res) => {
-    res.send('Contact page');
-});
-
-app.get('/contact-me', (req, res) => {
-    res.redirect(301, '/contact');
-});
-
-app.use((req, res, next) => {
-    res.status(404).send('Page cannot be found');
-});
-
-app.listen(port, host, () => {
-    console.log('The server is running at port', port);
-});
+module.exports = app;

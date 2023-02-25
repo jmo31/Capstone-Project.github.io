@@ -1,0 +1,323 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var exec = require('child_process').exec
+  , program = require('commander')
+  , mkdirp = require('mkdirp')
+  , pkg = require('../package.json')
+  , version = pkg.version
+  , supportedVersion = "0.1.x"
+  , os = require('os')
+  , fs = require('fs');
+
+// CLI
+
+program
+  .version(version)
+  .option('-s, --sessions', 'add session support')
+  .option('-e, --ejs', 'add ejs engine support (defaults to jade)')
+  .option('-J, --jshtml', 'add jshtml engine support (defaults to jade)')
+  .option('-h, --hogan', 'add hogan.js engine support')
+  .option('-c, --css <engine>', 'add stylesheet <engine> support (less|stylus) (defaults to plain css)')
+  .option('-x, --express_version <version>', 'SampleFile Support. Using Express Version <version> (2|3) (defaults to 2)')
+  .option('-f, --force', 'Dummy Option')
+  .parse(process.argv);
+
+// Path
+
+var path = program.args.shift() || '.';
+
+// end-of-line code
+
+var eol = 'win32' == os.platform() ? '\r\n' : '\n'
+
+// Template engine
+
+program.template = 'jade';
+if (program.ejs) program.template = 'ejs';
+if (program.jshtml) program.template = 'jshtml';
+if (program.hogan) program.template = 'hjs';
+
+//Express Version
+var express_version = "v2_x";
+if (program.express_version == "3") express_version = "v3_x";
+
+/**
+ * Base Handler template.
+ */
+
+var BaseHandler = [
+    ''
+  , '/*'
+  , ' * BaseHandler.'
+  , ' */'
+  , ''
+  , 'module.exports = function(eor){'
+  , '  return klass(function(){});'
+  , '};'
+].join(eol);
+
+/**
+ * Application Handler template.
+ */
+
+var ApplicationHandler = [
+     ''
+  , '/*'
+  , ' * ApplicationHandler.'
+  , ' */'
+  , ''
+  , 'module.exports = function(eor){'
+  , '  return eor.define("Base").extend(function(){});'
+  , '};'
+].join(eol);
+
+/**
+ * Dynamic Handler template.
+ */
+
+var DynamicHandler = [
+    'module.exports = function(eor){'
+  , '  return eor.define("Application").extend(function(){'
+  , '  })'
+  , '  .methods({'
+  , '    index : function(req, res) {'
+  , ''
+  , '    }'
+  , '  })'
+  , '};'
+].join(eol);
+
+/**
+ * Dynamic Handler template.
+ */
+
+var SampleHandler = [
+    'module.exports = function(eor){'
+  , '  return eor.define("Application").extend(function(){'
+  , '  })'
+  , '  .methods({'
+  , '    index : function(req, res) {'
+  , '      res.render(\'index\', { title: \'Express Override\' })'
+  , '    },'
+  , '    hello : function(req, res) {'
+  , '      res.render(\'index\', { title: eor.shared.name })'
+  , '    }'
+  , '  })'
+  , '};'
+].join(eol);
+
+/**
+ * App template.
+ */
+
+var app = [
+    ''
+  , '/**'
+  , ' * Module dependencies.'
+  , ' */'
+  , ''
+  , 'var express = require(\'express\')'
+  , '  , routes = require(\'./routes\')'
+  , ':EXPRESS_VERSION_DEPENDENCE_01'
+//  , '  , http = require(\'http\')'
+  , '  , EOR = require(\'express-override\');'
+  , ''
+  , ':EXPRESS_VERSION_DEPENDENCE_02'
+  , ''
+  , 'app.configure(function(){'
+  , '  app.set(\'port\', process.env.PORT || 3000);'
+  , '  app.set(\'views\', __dirname + \'/views\');'
+  , '  app.set(\'view engine\', \':TEMPLATE\');'
+  , '  app.use(express.favicon());'
+  , '  app.use(express.logger(\'dev\'));'
+  , '  app.use(express.bodyParser());'
+  , '  app.use(express.methodOverride());{sess}'
+  , '  app.use(app.router);{css}'
+  , '  app.use(express.static(__dirname + \'/public\'));'
+  , '});'
+  , ''
+  , 'app.configure(\'development\', function(){'
+  , '  app.use(express.errorHandler());'
+  , '});'
+  , ''
+  , '//app.get(\'/\', routes.index);'
+  , '// Create EOR Instance'
+  , 'var eor = new EOR(app);'
+  , ''
+  , '// EOR Global Variables'
+  , 'eor.shared.name = \'Hello Express Override! \'; '
+  , ''
+  , '// Routes'
+  , ''
+  , '// Change Express Routes Setting To eor Routes Setting'
+  , '//app.get(\'/\', routes.index);'
+  , 'eor.setRoutes(['
+  , '  {"get" : ["/", "Sample"]},'
+  , '  {"get" : ["/hello", "Sample.hello"]}'
+  , ']);'
+  , ''
+  , ''
+  , ':EXPRESS_VERSION_DEPENDENCE_03'
+  // , 'http.createServer(app).listen(app.get(\'port\'), function(){'
+  // , '  console.log("Express server listening on port " + app.get(\'port\'));'
+  // , '});'
+  // ,
+  // , '// When Express Version 2.5.x'
+  // , '//app.listen(3000, function(){'
+  // , '//  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);'
+  // , '//});'
+  , ''
+].join(eol);
+
+var ExpressVersionDependenceData = {
+  "v2_x" : 
+    [
+      "",
+      "var app = module.exports = express.createServer();",
+      'app.listen(3000, function(){'
+    + '  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);'
+    + '});'
+    ],
+  "v3_x" : 
+    [
+      '  , http = require(\'http\')',
+      'var app = express();',
+      'http.createServer(app).listen(app.get(\'port\'), function(){'
+    + '  console.log("Express server listening on port " + app.get(\'port\'));'
+    + '});'
+    ]
+
+};
+
+// Generate application
+
+(function createApplication() {
+  program.confirm('This is ProjectRoot? Are you ready? ', function(ok){
+    if (ok) {
+      process.stdin.destroy();
+      createApplicationAt();
+    } else {
+      abort('aborting');
+    }
+  });
+})();
+
+function createApplicationAt() {
+  var prjPkg = false;
+  try{
+    prjPkg = JSON.parse(fs.readFileSync(path + '/package.json'));
+    prjPkg.dependencies['express-override'] = supportedVersion;
+    write(path + '/package.json', JSON.stringify(prjPkg, null, 2));
+  }catch(e){}
+
+  process.on('exit', function(){
+    console.log();
+    console.log("  Created Express Override  ");
+    console.log("  Getting Started  ");
+    if(prjPkg){
+      console.log("  $ npm install -d ");
+    }else{
+      console.log("  $ npm install express-override");
+    }
+    console.log("  $ node eor-sapmele-app.js ");
+    console.log();
+  });
+
+  mkdir(path + '/handlers', function(){
+    write(path + '/handlers/BaseHandler.js', BaseHandler);
+    write(path + '/handlers/ApplicationHandler.js', ApplicationHandler);
+  });
+  mkdir(path + '/models');
+
+  // Create SampleApp.js
+  switch (program.css) {
+    case 'less':
+      app = app.replace('{css}', eol + '  app.use(require(\'less-middleware\')({ src: __dirname + \'/public\' }));');
+      break;
+    case 'stylus':
+      app = app.replace('{css}', eol + '  app.use(require(\'stylus\').middleware(__dirname + \'/public\'));');
+      break;
+    default:
+      app = app.replace('{css}', '');
+  }
+
+  // V3 Session support
+  if(program.express_version == "3"){
+    app = app.replace('{sess}', program.sessions
+      ? eol + '  app.use(express.cookieParser(\'your secret here\'));' + eol + '  app.use(express.session());'
+      : '');
+  }else{
+    // V2 Session support
+    app = app.replace('{sess}', program.sessions
+      ? eol + '  app.use(express.cookieParser());' + eol + '  app.use(express.session({ secret: \'your secret here\' }));'
+      : '');
+  }
+
+  // Template support
+  app = app.replace(':TEMPLATE', program.template);
+
+  // Express Version Support
+  app = app.replace(':EXPRESS_VERSION_DEPENDENCE_01', ExpressVersionDependenceData[express_version][0]);
+  app = app.replace(':EXPRESS_VERSION_DEPENDENCE_02', ExpressVersionDependenceData[express_version][1]);
+  app = app.replace(':EXPRESS_VERSION_DEPENDENCE_03', ExpressVersionDependenceData[express_version][2]);
+
+  write(path + '/eor-sapmele-app.js', app);
+  write(path + '/handlers/SampleHandler.js', SampleHandler);
+
+}
+
+/**
+ * Check if the given directory `path` is empty.
+ *
+ * @param {String} path
+ * @param {Function} fn
+ */
+
+function emptyDirectory(path, fn) {
+  fs.readdir(path, function(err, files){
+    if (err && 'ENOENT' != err.code) throw err;
+    fn(!files || !files.length);
+  });
+}
+
+/**
+ * echo str > path.
+ *
+ * @param {String} path
+ * @param {String} str
+ */
+
+function write(path, str) {
+  fs.writeFile(path, str);
+  console.log('   \x1b[36mcreate\x1b[0m : ' + path);
+}
+
+/**
+ * Mkdir -p.
+ *
+ * @param {String} path
+ * @param {Function} fn
+ */
+
+function mkdir(path, fn) {
+  mkdirp(path, 0755, function(err){
+    if (err) throw err;
+    console.log('   \033[36mcreate\033[0m : ' + path);
+    fn && fn();
+  });
+}
+
+/**
+ * Exit with the given `str`.
+ *
+ * @param {String} str
+ */
+
+function abort(str) {
+  console.error(str);
+  process.exit(1);
+}
