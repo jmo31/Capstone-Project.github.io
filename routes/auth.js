@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var connection  = require('../lib/db');
-//display login page
+
+
 router.get('/', function(req, res, next){    
 res.render('auth/login', {
 title: 'Login',
