@@ -111,4 +111,32 @@ button {
 .wrapper {
     text-align: center;
 }
+#wishlist-container {
+	width: 600px;
+	margin: 0 auto;
+}
 
+#add-item-form {
+	margin-top: 20px;
+}
+
+#item-name {
+	width: 300px;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+#add-item-button {
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	background-color: #4286f4;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+#add-item-button:hover {
+	background-color: #346dc5;
+}
