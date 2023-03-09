@@ -2,6 +2,7 @@ const mysql = require('mysql');
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+const ejs = require('ejs');
 
 const connection = mysql.createConnection({
 	host     : 'localhost',
@@ -11,6 +12,12 @@ const connection = mysql.createConnection({
 });
 
 const app = express();
+
+let port = 3000;
+let host = 'localhost';
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+
 
 app.use(session({
 	secret: 'secret',
@@ -69,4 +76,7 @@ app.get('/views/index.html', function(request, response) {
 	response.end();
 });
 
-app.listen(3000);
+// app.listen(3000);
+app.listen(port, host, ()=>{
+	console.log('Server is running on port', port);
+})
