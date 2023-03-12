@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto+Slab:wght@200&display=swap');
+
 
 
 * {
@@ -9,19 +8,17 @@
   }
 
 body {
-    
-    background-color: #D7CEC7;
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    font-family: 'Playfair Display', serif;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+   
+  text-align: center;
+  grid-template-rows: auto 1fr auto;
     
 }
- h1, h2, h3{
-text-align: center;
-padding-top: 10px;
-
-}
+#enterDetails {float: left; width: 50%;  background-color: darkslategray; color: floralwhite;}
+#findDetails {float: left; width: 50%; background-color: floralwhite; color: darkslategray;}
+input {width: 120px;}
 nav {
     padding: 1rem;
     color: white;
@@ -96,56 +93,10 @@ nav a{
     color: white;
     background-color: rgb(0, 66, 30);
     text-align: center;
-   
+     /* margin-top: 550px; */
     padding: 1rem;
-}
-
-#image{
-   padding-top: 50px;
-    text-align: center;
-}
-
-
-button {
-    background-color: #0d6743;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 10px;
-    position: absolute;
-    top: 50%;
-}
-.wrapper {
-    text-align: center;
-}
-#wishlist-container {
-	width: 600px;
-	margin: 0 auto;
-}
-
-#add-item-form {
-	margin-top: 20px;
-}
-
-#item-name {
-	width: 300px;
-	padding: 10px;
-	font-size: 16px;
-	border-radius: 5px;
-	border: 1px solid #ccc;
-}
-#add-item-button {
-	padding: 10px;
-	font-size: 16px;
-	border-radius: 5px;
-	background-color: #4286f4;
-	color: white;
-	border: none;
-	cursor: pointer;
-}
-
-#add-item-button:hover {
-	background-color: #346dc5;
-}
+   }
+  
+  .container{
+    margin-bottom: 180px;
+  }

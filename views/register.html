@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
     <title>Registration</title>
+    
 </head>
 
 <body>
@@ -13,16 +15,26 @@
     <main>
 
         <h2>Registration from</h2>
-        <form action=”/” method = "POST">
-            <input type="text" id="name" name= "nameofuser" placeholder="Name" required><br>
-            <input type="email" id="email" name = "useremail"placeholder="Email" required><br>
-            <input type="password" id="password" name = "userpass" placeholder="Password" required><br>
-            <input type="button" class= "btn" value="Register">
+        <div class="alert">Your form has been sent</div>
+        <!-- <form action=”/” method = "POST"> -->
+            <form id="contactForm">
+           <label>Name</label>
+            <input type="text" id="name" name= "name" placeholder="Name" required><br>
+            <label>Email Address</label>
+            <input type="email" id="email" name = "email" placeholder="Email" required><br>
+            <label>Password</label>
+            <input type="text" id="password" name = "password" placeholder="Password" required><br>
+            <label>Phone Number</label>
+            <input type="text" name="phone" id="phone">
+            <!-- <input type="button" class= "btn" value="Register"> -->
+            <button type="submit"> Submit</button>
         </form>
         
     </main>
     <div data-include="components/footer.html"></div>
     <script src="../scripts/HTMLInclude.js"></script>   
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script src="main.js"></script>
    
 </body>
 

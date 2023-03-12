@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/css.css">
+
+</head>
+<body>
+    
+    <div data-include="components/header.html"></div>
+    <div id="cen">
+    <div id="enterDetails">
+        <h1>Enter details</h1>
+
+        <h4>ID</h4> 
+        <input id="enterID" type="text"> 
+
+        <h4>Game Name</h4> 
+        <input id="enterName" type="text"> 
+
+        <h4>Game Types</h4> 
+        <input id="enterTypes" type="text"> <br><br>
+
+        <button id="insert">INSERT</button>
+        <button id="update">UPDATE</button>
+        <button id="remove">REMOVE</button> <br><br>
+    </div>
+
+    <div id="findDetails">
+        <h1>Find by ID</h1>
+        <h4>ID</h4>
+        <input id="findID" type="text"> <br><br>
+        <button id="find">FIND</button>
+        <h3 id="findName" type="text"></h3>
+        <h3 id="findTypes" type="text"></h3> <br><br>
+    </div>
+</div>
+
+<div data-include="components/footer.html"></div>
+<script src="../scripts/HTMLInclude.js"></script>
+</body>
+
+    <script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDNXj8s9O4Yjp043ohXWzJOg39KzVbAZW8",
+    authDomain: "demos-d1a06.firebaseapp.com",
+    databaseURL: "https://demos-d1a06-default-rtdb.firebaseio.com",
+    projectId: "demos-d1a06",
+    storageBucket: "demos-d1a06.appspot.com",
+    messagingSenderId: "941392632723",
+    appId: "1:941392632723:web:cfefdaf28016182409a666"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+   
+
+        import {getDatabase, ref, get, set, child, update, remove}
+        from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js"//Copy and Paste the URL from near the top of the CDN you pasted in from firebase
+        // (the one where you imported "initializeApp" from),
+        //but change "firebase-app" to "firebase-database"
+        
+
+        const db = getDatabase();
+
+        var enterID = document.querySelector("#enterID");
+        var enterName = document.querySelector("#enterName");
+        var enterTypes = document.querySelector("#enterTypes");
+        var findID = document.querySelector("#findID");
+        var findName = document.querySelector("#findName");
+        var findTypes = document.querySelector("#findTypes");
+      
+        var insertBtn = document.querySelector("#insert");
+        var updateBtn = document.querySelector("#update");
+        var removeBtn = document.querySelector("#remove");
+        var findBtn = document.querySelector("#find");
+
+        function InsertData() {
+            set(ref(db, "People/"+ enterID.value),{
+                Name: enterName.value,
+                ID: enterID.value,
+                Types: enterTypes.value
+            })
+            .then(()=>{
+                alert("Data added successfully");
+                
+            })
+            .catch((error)=>{
+                alert(error);
+            });
+        }
+
+        function FindData() {
+            const dbref = ref(db);
+
+            get(child(dbref, "People/" + findID.value))
+            .then((snapshot)=>{
+                if(snapshot.exists()){
+                    findName.innerHTML = "Game Name: " + snapshot.val().Name;
+                    findTypes.innerHTML = "Game Type: " + snapshot.val().Types;
+                } else {
+                    alert("No data found");
+                }
+            })
+            .catch((error)=>{
+                alert(error)
+            })
+            
+        }
+
+        function UpdateData(){
+            update(ref(db, "People/"+ enterID.value),{
+                Name: enterName.value,
+                Types: enterTypes.value
+            })
+            .then(()=>{
+                alert("Data updated successfully");
+            })
+            .catch((error)=>{
+                alert(error);
+            });
+        }
+
+        function RemoveData(){
+            remove(ref(db, "People/"+ enterID.value))
+            .then(()=>{
+                alert("Data deleted successfully");
+            })
+            .catch((error)=>{
+                alert(error);
+            });
+        }
+
+        insertBtn.addEventListener('click', InsertData);
+        updateBtn.addEventListener('click', UpdateData);
+        removeBtn.addEventListener('click', RemoveData);
+        findBtn.addEventListener('click', FindData);
+
+      </script>
+
+
+</html>
