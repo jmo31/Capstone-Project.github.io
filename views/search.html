@@ -18,8 +18,17 @@
         <h4>ID</h4> 
         <input id="enterID" type="text"> 
 
-        <h4>Game Name</h4> 
-        <input id="enterName" type="text"> 
+        <h4>Genre of Game</h4> 
+        <select id="enterName" type="text" >
+            <option value="Sports">Sports</option>
+            <option value="Combat">Combat</option>
+            <option value="Retro">Retro</option>
+            <option value="Board game style">Board game style</option>
+            <option value="Cross-over fighting">Cross-over fighting</option>
+            <option value="First person shooter">First person shooter</option>
+            <option value="Third person shooter">Third person shooter</option>
+    </select>
+        <!-- <input id="enterName" type="text">  -->
 
         <h4>Game Types</h4> 
         <input id="enterTypes" type="text"> <br><br>
@@ -34,11 +43,14 @@
         <h4>ID</h4>
         <input id="findID" type="text"> <br><br>
         <button id="find">FIND</button>
-        <h3 id="findName" type="text"></h3>
-        <h3 id="findTypes" type="text"></h3> <br><br>
+        <h3 id="findName" type="text"></h3><br>
+        <h3 id="findTypes" type="text"></h3><br>
+        <h3 id="findPrice" type="text"></h3> <br><br>
     </div>
 </div>
-
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="#" id="logout" style="display: block;">Log Out</a></li>
+</ul>
 <div data-include="components/footer.html"></div>
 <script src="../scripts/HTMLInclude.js"></script>
 </body>
@@ -66,11 +78,15 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebas
 
         import {getDatabase, ref, get, set, child, update, remove}
         from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js"//Copy and Paste the URL from near the top of the CDN you pasted in from firebase
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+	    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
         // (the one where you imported "initializeApp" from),
         //but change "firebase-app" to "firebase-database"
         
 
         const db = getDatabase();
+        const auth = getAuth();
+       
 
         var enterID = document.querySelector("#enterID");
         var enterName = document.querySelector("#enterName");
@@ -107,6 +123,23 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebas
                 if(snapshot.exists()){
                     findName.innerHTML = "Game Name: " + snapshot.val().Name;
                     findTypes.innerHTML = "Game Type: " + snapshot.val().Types;
+                    if(snapshot.val().Name=='Sports'){
+                        findPrice.innerHTML = "Price for Sports: $" + 56;
+                    }else   if(snapshot.val().Name=='Combat'){
+                        findPrice.innerHTML = "Price for Combat: $" + 26;
+                    }
+                    else if(snapshot.val().Name=='Retro'){
+                        findPrice.innerHTML = "Price for Retro: $" + 36;
+                    }else if(snapshot.val().Name=='Board game style'){
+                        findPrice.innerHTML = "Price for Board game style: $" + 56;
+                    }else if(snapshot.val().Name=='Cross-over fighting'){
+                        findPrice.innerHTML = "Price for Cross-over fighting: $" + 16;
+                    }else if(snapshot.val().Name=='First person shooter'){
+                        findPrice.innerHTML = "First person shooter: $" + 64;
+                    }else if(snapshot.val().Name=='Third person shooter'){
+                        findPrice.innerHTML = "Price for Third person shooter: $" + 56;
+                    }
+
                 } else {
                     alert("No data found");
                 }
@@ -144,6 +177,26 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebas
         updateBtn.addEventListener('click', UpdateData);
         removeBtn.addEventListener('click', RemoveData);
         findBtn.addEventListener('click', FindData);
+
+
+        document.getElementById("logout").addEventListener("click", function() {
+		  signOut(auth).then(() => {
+			  // Sign-out successful.
+			  console.log('Sign-out successful.');
+			  alert('Sign-out successful.');
+			  document.getElementById('logout').style.display = 'none';
+
+
+			  setTimeout(function(){
+           window.location.assign("logins.html");
+      },4000);
+             
+			}).catch((error) => {
+			  // An error happened.
+			  console.log('An error happened.');
+			});		
+
+	  });
 
       </script>
 

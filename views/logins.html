@@ -170,11 +170,12 @@
 			  // Sign-out successful.
 			  console.log('Sign-out successful.');
 			  alert('Sign-out successful.');
-
-              setTimeout(function(){
-           window.location.assign("game.html");
-      },4000);
 			  document.getElementById('logout').style.display = 'none';
+
+
+			  setTimeout(function(){
+           window.location.assign("logins.html");
+      },4000);
              
 			}).catch((error) => {
 			  // An error happened.
