@@ -27,8 +27,13 @@
             <option value="Cross-over fighting">Cross-over fighting</option>
             <option value="First person shooter">First person shooter</option>
             <option value="Third person shooter">Third person shooter</option>
-    </select>
-        <!-- <input id="enterName" type="text">  -->
+    </select><br><br>
+    <h4>Enter your Age</h4> 
+        <input id="enterAge" type="number"> 
+
+        <h4>What system do you use</h4>
+        <input id="enterSystem" type="text"> 
+
 
         <h4>Game Types</h4> 
         <input id="enterTypes" type="text"> <br><br>
@@ -45,7 +50,10 @@
         <button id="find">FIND</button>
         <h3 id="findName" type="text"></h3><br>
         <h3 id="findTypes" type="text"></h3><br>
+        <h3 id="findAges" type="number"></h3><br>
+        <h3 id="findSystem" type="text"></h3><br>
         <h3 id="findPrice" type="text"></h3> <br><br>
+        <p id="findImage" type="image"> </p>
     </div>
 </div>
 <ul class="nav navbar-nav navbar-right">
@@ -91,9 +99,18 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebas
         var enterID = document.querySelector("#enterID");
         var enterName = document.querySelector("#enterName");
         var enterTypes = document.querySelector("#enterTypes");
+        var enterAge = document.querySelector("#enterAge");
+        var enterSystem = document.querySelector("#enterSystem");
+
         var findID = document.querySelector("#findID");
         var findName = document.querySelector("#findName");
         var findTypes = document.querySelector("#findTypes");
+        var findAges = document.querySelector("#findAges");
+        var findSystem = document.querySelector("#findSystem");
+        var findImage = document.querySelector("#findImage");
+       
+
+       
       
         var insertBtn = document.querySelector("#insert");
         var updateBtn = document.querySelector("#update");
@@ -104,7 +121,9 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebas
             set(ref(db, "People/"+ enterID.value),{
                 Name: enterName.value,
                 ID: enterID.value,
-                Types: enterTypes.value
+                Types: enterTypes.value,
+                Age:enterAge.value,
+                System:enterSystem.value
             })
             .then(()=>{
                 alert("Data added successfully");
@@ -123,9 +142,19 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebas
                 if(snapshot.exists()){
                     findName.innerHTML = "Game Name: " + snapshot.val().Name;
                     findTypes.innerHTML = "Game Type: " + snapshot.val().Types;
-                    if(snapshot.val().Name=='Sports'){
-                        findPrice.innerHTML = "Price for Sports: $" + 56;
-                    }else   if(snapshot.val().Name=='Combat'){
+                    findSystem.innerHTML = "Computer System Selected: " + snapshot.val().System;
+                    findAges.innerHTML = "Age: " + snapshot.val().Age;
+
+                    if(snapshot.val().Name=='Sports' && snapshot.val().Age <=13){
+
+                        findPrice.innerHTML = "Sorry we need family confarmation" + 56 +".//Game Cenral-logos .jpeg";
+                        findImage.innerHTML ="Game Cenral-logos .jpeg" 
+
+                    }else if(snapshot.val().Name=='Sports' && snapshot.val().Age >13){
+
+                     findPrice.innerHTML = "Price for Sports: $" + 56;
+                   }
+                    else if(snapshot.val().Name=='Combat'){
                         findPrice.innerHTML = "Price for Combat: $" + 26;
                     }
                     else if(snapshot.val().Name=='Retro'){
@@ -138,6 +167,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebas
                         findPrice.innerHTML = "First person shooter: $" + 64;
                     }else if(snapshot.val().Name=='Third person shooter'){
                         findPrice.innerHTML = "Price for Third person shooter: $" + 56;
+
                     }
 
                 } else {

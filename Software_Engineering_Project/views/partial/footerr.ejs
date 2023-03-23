@@ -1,0 +1,123 @@
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+  apiKey: "AIzaSyDCE-pEsnIN3K1xsdI2XkcuYIidDwSYf0U",
+  authDomain: "logins-d09d1.firebaseapp.com",
+  databaseURL: "https://logins-d09d1-default-rtdb.firebaseio.com",
+  projectId: "logins-d09d1",
+  storageBucket: "logins-d09d1.appspot.com",
+  messagingSenderId: "297388775367",
+  appId: "1:297388775367:web:68e3d4ad5acf41c6fa2be2"
+};
+
+
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+   
+//   const analytics = getAnalytics(app);
+  const auth = getAuth();
+     
+  //----- New Registration code start	  
+  document.getElementById("register").addEventListener("click", function() {
+    var email =  document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+        var name = document.getElementById("name").value;
+
+       
+
+  
+    //For new registration
+    createUserWithEmailAndPassword(auth, email, password, name)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+
+      if (user !== null) {
+  // The user object has basic properties such as display name, email, etc.
+     const name = user.name;
+     const email = user.email;
+      }
+      console.log(user);
+      alert("Registration successfully!!");
+
+          setTimeout(function(){
+         window.location.assign("/search");
+    },5000);
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+      console.log(errorMessage);
+      alert(error);
+    });	
+        
+      
+  });
+  //----- End
+
+  //----- Login code start	  
+  document.getElementById("login").addEventListener("click", function() {
+    var email =  document.getElementById("login_email").value;
+    var password = document.getElementById("login_password").value;
+    var name =document.getElementById("login_name").value;
+   
+
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+     const user = userCredential.user;
+      console.log(user);
+      alert("Welcome "+name+ " your're Login with "+user.email+" email address successfully!!!");
+      document.getElementById('logout').style.display = 'block';
+    setTimeout(function(){
+         window.location.assign("/search");
+    },5000);
+        
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage);
+      alert(errorMessage);
+    });	
+        
+       
+
+  });
+  //----- End
+
+  //----- Logout code start	  
+  document.getElementById("logout").addEventListener("click", function() {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      console.log('Sign-out successful.');
+      alert('Sign-out successful.');
+      document.getElementById('logout').style.display = 'none';
+
+
+      setTimeout(function(){
+         window.location.assign("logins.html");
+    },4000);
+           
+    }).catch((error) => {
+      // An error happened.
+      console.log('An error happened.');
+    });		
+
+  });
+  //----- End
+
+</script>
+</html>
