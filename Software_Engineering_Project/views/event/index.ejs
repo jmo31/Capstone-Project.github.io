@@ -1,6 +1,14 @@
 
 <%- include('../partial/header.ejs')%>
 <main>
+  <div id="searchBar">
+    <h1>Search for a game!</h1>
+    <input id="gameSearch" type="text"> <br><br>
+    <button id="searchSub">Search</button>
+    
+    
+</div>
+
   <% if(events.length){
     categories.forEach(category=>{%>
   

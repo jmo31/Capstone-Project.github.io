@@ -44,7 +44,7 @@
             var findAges = document.querySelector("#findAges");
             var findSystem = document.querySelector("#findSystem");
             var findImage = document.querySelector("#findImage");
-           
+            var gameSearch = document.querySelector("#gameSearch");
     
            
           
@@ -52,7 +52,8 @@
             var updateBtn = document.querySelector("#update");
             var removeBtn = document.querySelector("#remove");
             var findBtn = document.querySelector("#find");
-    
+            var searchBtn = document.querySelector("#searchSub");
+
             function InsertData() {
                 set(ref(db, "People/"+ enterID.value),{
                     Name: enterName.value,
@@ -69,7 +70,21 @@
                     alert(error);
                 });
             }
-    
+            function getSearch(){
+                const dbref = ref(db);
+                get(child(dbref, "People/" + gameSearch.value))
+                    .then((snapshot)=>{
+                         if(snapshot.exists()){
+
+                             } else {
+                         alert("No data found");
+                             }
+                                 })
+                             .catch((error)=>{
+                                 alert(error)
+                                     })
+                                        }
+
             function FindData() {
                 const dbref = ref(db);
     
@@ -86,33 +101,17 @@
                             findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
                           
     
-                        }else if(snapshot.val().Name=='Sports' && snapshot.val().Age >17){
-    
-                         findPrice.innerHTML = "As a survey information you are "  + snapshot.val().Age+ " years old, which is greater than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
-                       }
-                        else if(snapshot.val().Name=='Combat' && snapshot.val().Age <=17){
-                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
-                       
-                        }else if(snapshot.val().Name=='Combat' && snapshot.val().Age >17){
+                        }
+                        else if(snapshot.val().Name=='Combat' && snapshot.val().Age >17){
                             findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is greater than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
                         }
-
                         else if(snapshot.val().Name=='Retro' && snapshot.val().Age <=17 ){
                             findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
 
-                        }
-                        else if(snapshot.val().Name=='Retro' && snapshot.val().Age >17 ){
-                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is greater than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
-
-                        }
+                        }                      
                         else if(snapshot.val().Name=='Board game style' && snapshot.val().Age <=17){
 
-                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
-                        
-                        }else if(snapshot.val().Name=='Board game style' && snapshot.val().Age >17){
-
-                        findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
-
+                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";                     
                       }
                         else if(snapshot.val().Name=='Cross-over fighting' && snapshot.val().Age <=17){
                             findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
@@ -161,7 +160,7 @@
             updateBtn.addEventListener('click', UpdateData);
             removeBtn.addEventListener('click', RemoveData);
             findBtn.addEventListener('click', FindData);
-    
+            searchBtn.addEventListener('click', getSearch);
     
             document.getElementById("logout").addEventListener("click", function() {
               signOut(auth).then(() => {

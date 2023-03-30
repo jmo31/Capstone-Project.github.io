@@ -17,8 +17,21 @@
     
 }
 #enterDetails {float: left; width: 50%;  background-color: darkslategray; color: floralwhite;}
-#findDetails {float: left; width: 50%; background-color: floralwhite; color: darkslategray;}
-input {width: 120px;}
+#findDetails {float: left; 
+  width: 50%; background-color:
+   floralwhite; color: 
+   darkslategray;}
+   
+   
+   
+   
+   
+   
+   
+   
+   
+  
+   input {width: 120px;}
 nav {
     padding: 1rem;
     color: white;
