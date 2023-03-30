@@ -111,13 +111,22 @@
                         }                      
                         else if(snapshot.val().Name=='Board game style' && snapshot.val().Age <=17){
 
-                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";                     
+                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+                        
+                        }else if(snapshot.val().Name=='Board game style' && snapshot.val().Age >17){
+
+                        findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is greater than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+
                       }
                         else if(snapshot.val().Name=='Cross-over fighting' && snapshot.val().Age <=17){
                             findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
 
-                        }else if(snapshot.val().Name=='First person shooter'){
-                            findPrice.innerHTML = "First person shooter: $" + 64;
+                        }else if(snapshot.val().Name=='Cross-over fighting' && snapshot.val().Age >17){
+                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is greater than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+
+                        }
+                        else if(snapshot.val().Name=='First person shooter' && snapshot.val().Age <=17){
+                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
                         }else if(snapshot.val().Name=='Third person shooter'){
                             findPrice.innerHTML = "Price for Third person shooter: $" + 56;
     
