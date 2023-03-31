@@ -1,0 +1,27 @@
+
+<%- include('../partial/signHeader.ejs')%>
+<main>
+  <% if(events.length){
+    categories.forEach(category=>{%>
+  
+      <h2><%= category %></h2>
+      <ul>
+        <%events.forEach(event =>{%>
+  
+          <% if(event.category ===category){%>
+            <ol class="event">
+              <li id="li"> <a href="/wish/<%= event.id%>"><p> <%= event.title%></p></a></li>
+            </ol>
+         <% }
+
+        }); %>
+
+      </ul>
+     <%});
+  
+   }else{%>
+    
+    <p>There are no stories to display</p>
+  <%} %>
+</main>
+    <%- include('../partial/footer.ejs')%>

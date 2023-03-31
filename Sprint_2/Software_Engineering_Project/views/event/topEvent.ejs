@@ -1,0 +1,36 @@
+<%- include('../partial/signHeader.ejs')%>
+    <main>
+        <form action='/events' enctype="multipart/form-data"  method ='POST'>
+        <label for="category"> Category </label> 
+            <select id="category" name="category">
+                <option value="selectedCategory">--select category--</option>
+                <option value="ACTION GAMES">ACTION GAMES</option>
+                <option value="ADVENTURE GAMES">ADVENTURE GAMES</option>
+                <option value="ANIMAL GAMES">ANIMAL GAMES</option>
+                <option value="SPORTS GAMES">SPORTS GAMES</option>
+                <option value="SIMULATION GAMES">SIMULATION GAMES</option>
+                <option value="PUZZLE GAMES"> PUZZLE GAMES</option>
+                <option value="MULTIPLAYER GAMES">MULTIPLAYER GAMES</option>
+                <option value="ART & CREATIVITY GAMES">ART & CREATIVITY GAMES</option> 
+              </select><br><br>
+        <label for="title"> Game Title</label> 
+        <input type="text" id="title" value="title" name="title" required=""> <br><br>
+        <label for="hostName"> Author:</label> 
+        <input type="text" id="hostName" value="Author or Publishers Name" name="hostName" required=""> <br><br>
+        <label for="details"> Details:</label> 
+        <input type="text" id="details" value="description" name="details" required=""> <br><br>
+        <label for="location"> Where:</label> 
+        <input type="text" id="location" value="location" name="location" required=""> <br><br>
+        <label for="startDateTime"> Orginal Published Date</label> 
+        <input type="datetime-local" id="startDateTime" value="" name="startDateTime" required=""> <br><br>
+        <label for="endDateTime">Updated or Edited date </label> 
+        <input type="datetime-local" id="endDateTime" name="endDateTime" value="" required="" > <br><br>
+        <label for="image">Image</label>
+        <input type="file" id="image" name="image" value="image" required=""><br><br>
+        <input type="submit" value="Submit" class="text"><br><br> <br>
+         </form>
+        
+        
+    </main>
+    <%- include('../partial/footersearch.ejs')%>
+    <%- include('../partial/footer.ejs')%>

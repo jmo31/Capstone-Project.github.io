@@ -1,0 +1,52 @@
+
+<%- include('./partial/signHeader.ejs')%>
+
+<body>
+	<!-- <div data-include="components/header.html"></div> -->
+
+<div class="navbar navbar-default">
+<div class="navbar-header">
+  <!-- <a class="navbar-brand" href="https://webpages.charlotte.edu/ewekjira/Capstone/Capstone-Project/views/index.html">Game Central</a> -->
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+  </button>
+</div>
+</div>
+
+
+
+<div class="container">	
+<form name="registration_form" id="registration_form" method="post" action="#" enctype="multipart/form-data" >
+    <div class="row">
+  
+      <div class="col-sm-4">
+          <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" class="form-control" placeholder="Enter your email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password" >Password</label>
+            <input type="password" name="password" id="password" class="form-control"  placeholder="Enter your password" required>
+          </div>
+          <button type="button" id="register" name="register" class="btn btn-success">Register Now</button>
+        </div><!-- end col -->
+	
+    </div><!--  end row -->		
+    </form>
+  </div>
+  <br>
+  <div data-include="components/footer.html"></div>
+  <script src="../views/scripts/HTMLInclude.js"></script>
+  </body>
+  
+  <%- include('./partial/footerr.ejs')%>
+  <%- include('./partial/footer.ejs')%>
+  
