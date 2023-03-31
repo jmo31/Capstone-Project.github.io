@@ -15,18 +15,29 @@
 <header>
     <ul class="bar">
         <li id="logo"><a href="/"><img src="/images/Game Cenral-logos .jpeg" class="logo" alt="logos"></a></li>
-        <!-- <li> <a href="/events/new">NewEvent</a></li> -->
         <li> <a href="/wish/new">AddGames</a></li>
-        <li><a href="/sign">Login</a></li>
         <li><a href="/search">Survey</a></li>
-        <li><a href="/register">Sign Up</a></li>
-        <li><a href="#" id="logout" style="display: block;">Log Out</a></li>
+        <li><a href='/users/new'>Sign Up</a> </li>
+        <li><a href='/users/login'>Login</a></li> 
+        <!-- <li><a href='/users/profile'>Profile</a></li>  -->
         
     </ul>
     <hr>
     <nav>
-        <!-- <a href="/events">Top Games</a> -->
         <a href="/wish">TopGame</a>
+
+        <%if(errorMessages.length>0){
+            errorMessages.forEach(message=>{%>
+                <div class="error"><%= message%></div>
+           <% });
+        }%>
+        
+        <%if(successMessages.length>0){
+            successMessages.forEach(message=>{%>
+                <div class="success"><%= message%></div>
+           <% });
+        }%>
        
     </nav>
+   
 </header>

@@ -9,6 +9,14 @@ const eventRouter =require('./router/eventRouter');
 const mainRouter =require('./router/mainRouter');
 const wishRouter =require('./router/wishRouter');
 
+
+const userRoutes = require('./router/userRoutes');
+const User =require('./models/user')
+const session =require('express-session')
+const MongoStore =require('connect-mongo')
+const flash =require('connect-flash')
+
+
 // const {fileUpload} = require('./middleware/fileUpload');
 
 // const {fileUpload}=require('./middleware/fileUpload')
@@ -21,7 +29,7 @@ app.set('view enjine', 'ejs');
 
 
 
-mongoose.connect(url)
+mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true })
 .then(()=>{
     app.listen(port, host, ()=> {
     console.log('The server is running at port', port);
@@ -35,7 +43,23 @@ app.use(express.urlencoded({extended:true}));
 app.use(morgan('tiny'));
 app.use(methodOverride('_method'));
 
+app.use(session({
+    secret:'safeplaces',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {maxAge: 60*60*1000},
+    store: new MongoStore({mongoUrl: url})
+}));
 
+app.use(flash());
+
+app.use((req, res, next)=>{
+    console.log(req.session);
+    res.locals.successMessages= req.flash('success');
+    res.locals.errorMessages =req.flash('error')
+    next();
+
+});
 
 // app.post('/', fileUpload, (req, res, next) => {
 //     let image =  "./images/" + req.file.filename;
@@ -46,7 +70,7 @@ app.use(methodOverride('_method'));
 app.use('/events',eventRouter)
 
 app.use('/wish',wishRouter)
-
+app.use('/users', userRoutes);
 app.use('/',mainRouter)
 
 app.use((req, res, next)=>{

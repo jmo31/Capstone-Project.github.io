@@ -11,6 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/style/css.css">
+   
 
     
     <title>Software Project</title>
@@ -20,17 +21,22 @@
         <ul class="bar">
             <li id="logo"><a href="/"><img src="/images/Game Cenral-logos .jpeg" class="logo" alt="logos"></a></li>
             <li> <a href="/events/new">CreateWishGames</a></li>
-            <li> <a href="/wish/new">AddGames</a></li>
-            <li><a href="/sign">Sign Up</a></li>
-            <li><a href="/search">Survey</a></li>
-            <li><a href="#" id="logout" style="display: block;">Log Out</a></li>
+           <li><a href='/users/profile'>Profile</a></li> 
+           <li><a href='/users/logout'>Logout</a></li> 
         </ul>
         <hr>
         <nav>
-            <a href="/events">WishListsGame</a>
-            <a href="/wish">TopGame</a>
-          
-           
-           
+            <a href="/events">WishListsGame</a>  
+    <%if(errorMessages.length>0){
+        errorMessages.forEach(message=>{%>
+            <div class="error"><%= message%></div>
+       <% });
+    }%>
+
+    <%if(successMessages.length>0){
+        successMessages.forEach(message=>{%>
+            <div class="success"><%= message%></div>
+       <% });
+    }%>
         </nav>
     </header>

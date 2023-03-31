@@ -224,6 +224,8 @@ label {
 }
 input[type=text], input[type=file],
 input[type=datetime-local],input[ type=number],
+input[ type=email],
+input[ type=password],
 select {
     background-color: lightgrey;
     width: 80%;
@@ -259,7 +261,7 @@ footer {
     padding: 1rem;
    }
    button{
-    background-color: rgb(53, 50, 50);
+    background-color: rgb(144, 173, 132);
 
    }
 

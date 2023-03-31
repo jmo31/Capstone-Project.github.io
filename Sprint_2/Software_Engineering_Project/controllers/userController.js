@@ -5,7 +5,7 @@ const User = require('../models/user');
 
 
 exports.new = (req, res)=>{
-    res.render('./user/new');
+    res.render('./user/new.ejs');
 };
 //post
 exports.create=(req, res, next)=>{
@@ -33,7 +33,7 @@ exports.create=(req, res, next)=>{
 
 exports.newLogin =(req, res)=>{
     
-    res.render('./user/login');
+    res.render('./user/login.ejs');
 };
 
 
@@ -78,7 +78,7 @@ exports.profile = (req, res, next)=>{
 
     let id =req.session.user;
     User.findById(id)
-    .then(user=>res.render('./user/profile', {user}))
+    .then(user=>res.render('./user/profile.ejs', {user}))
     .catch(err=>next(err))
 
 };
