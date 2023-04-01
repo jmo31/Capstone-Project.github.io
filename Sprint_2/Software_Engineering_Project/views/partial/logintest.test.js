@@ -1,3 +1,4 @@
+import { getAuth} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 
 const login = require('../../app.js')
 
@@ -6,7 +7,7 @@ describe('Login functionality', () => {
   test('valid credentials should login successfully', () => {
     const email = 'test@example.com'
     const password = 'password123'
-    const loggedIn = login.Auth0Provider(email, password)
+    const loggedIn = login.getAuth(email, password)
     expect(loggedIn).toBeTruthy()
   })
 
@@ -14,7 +15,7 @@ describe('Login functionality', () => {
   test('incorrect password should fail authentication', () => {
     const email = 'test@example.com'
     const password = 'wrongpassword'
-    const loggedIn = login.Auth0Provider(email, password)
+    const loggedIn = login.getAuth(email, password)
     expect(loggedIn).toBeFalsy()
   })
 
@@ -22,7 +23,7 @@ describe('Login functionality', () => {
   test('non-existent email should fail authentication', () => {
     const email = 'nonexistent@example.com'
     const password = 'password123'
-    const loggedIn = login.auth(email, password)
+    const loggedIn = login.getAuth(email, password)
     expect(loggedIn).toBeFalsy()
   })
 
@@ -31,7 +32,7 @@ describe('Login functionality', () => {
     const email = 'invalidemailformat'
     const password = 'password123'
     expect(() => {
-      login.auth(email, password)
+      login.getAuth(email, password)
     }).toThrow()
   })
 })
