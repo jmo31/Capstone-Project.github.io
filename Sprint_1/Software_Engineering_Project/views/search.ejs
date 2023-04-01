@@ -1,0 +1,58 @@
+
+
+<%- include('./partial/header.ejs')%>
+<body  id="body">
+    
+    <div data-include="components/header.html"></div>
+    <div id="cen">
+    <div id="enterDetails">
+        <h1>Enter details of Survey</h1>
+
+        <h4>ID</h4> 
+        <input id="enterID" type="text"> 
+
+        <h4>Genre of Game</h4> 
+        <select id="enterName" type="text" >
+            <option value="Sports">Sports</option>
+            <option value="Combat">Combat</option>
+            <option value="Retro">Retro</option>
+            <option value="Board game style">Board game style</option>
+            <option value="Cross-over fighting">Cross-over fighting</option>
+            <option value="First person shooter">First person shooter</option>
+            <option value="Third person shooter">Third person shooter</option>
+    </select><br><br>
+    <h4>Enter your Age</h4> 
+        <input id="enterAge" type="number"> 
+
+        <h4>What system do you use</h4>
+        <input id="enterSystem" type="text"> 
+
+
+        <h4>How long do you plan on playing the game?</h4> 
+        <input id="enterTypes" type="text"> <br><br>
+
+        <button id="insert">INSERT</button>
+        <button id="update">UPDATE</button>
+        <button id="remove">REMOVE</button> <br><br>
+    </div>
+   
+    <h2 id="log"><a href="#" id="logout" style="display: block;">Log Out</a></h2>
+
+    <div id="findDetails">
+        <h1>Search for a game!</h1>
+        <input id="findID" type="text"> <br><br>
+        <button id="find">FIND</button>
+        <h3 id="findName" type="text"></h3><br>
+        <p id="findImage" type="image"> </p>
+    </div>
+</div>
+<!-- <ul class="nav navbar-nav navbar-right">
+    <li><a href="#" id="logout" style="display: block;">Log Out</a></li><br>
+</ul> -->
+<div data-include="components/footer.html"></div>
+<script src="../scripts/HTMLInclude.js"></script>
+</body>
+
+<%- include('./partial/footersearch.ejs')%>
+
+<%- include('./partial/footer.ejs')%>

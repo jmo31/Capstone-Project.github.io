@@ -1,0 +1,34 @@
+
+<%- include('../partial/header.ejs')%>
+<main>
+  <div id="searchBar">
+    <h1>Search for a game!</h1>
+    <input id="gameSearch" type="text"> <br><br>
+    <button id="searchSub">Search</button>
+    
+    
+</div>
+
+  <% if(events.length){
+    categories.forEach(category=>{%>
+  
+      <h2><%= category %></h2>
+      <ul>
+        <% events.forEach(event =>{%>
+  
+          <% if(event.category ===category){%>
+            <ol class="event">
+              <li> <a href="/events/<%= event.id%>"><p><%= event.title%></p></a></li>
+            </ol>
+         <% }
+
+        }); %>
+
+      </ul>
+     <%});
+  
+   }else{%>
+    <p>There are no stories to display</p>
+  <%} %>
+</main>
+    <%- include('../partial/footer.ejs')%>
