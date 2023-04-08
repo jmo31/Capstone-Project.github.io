@@ -342,37 +342,40 @@ button[type=submit]{
      
   } */
 
-
-  th,
-td {
+  table, th, td, tr{
 
     border: 1px solid #a28b2f;
-    padding: .2em 1em .2em .5em;
+    padding: .2em 1em .01em .5em;
+    width: 90%; 
    
-    color: antiquewhite;
+}
+
+#title{
+    text-align: left;
 }
 
 th{
-    text-align: right;
+    text-align: center;
 }
 
 #td {
-    text-align: right;
+    text-align:center;
    
 }
 td{
     font-family:bodonic MT;
     font-size: 26px;
-    
 }
 
-tbody tr:nth-child(even) {
-    background-color: rgba(161, 158, 94, 0.349);
-}
 
-tbody tr:nth-child(odd) {
-    background-color: #26413C;
-}
+button{
+    background-color: rgb(144, 173, 132);
+
+   }
+   th
+    {border:0px; }
+ 
+  
 
 
 
