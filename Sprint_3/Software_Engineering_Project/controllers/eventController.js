@@ -1,5 +1,6 @@
 
 const model = require('../models/event.js');
+const User =require('../models/user.js')
 
 exports.index = (req, res, next) => {
   
@@ -43,17 +44,25 @@ exports.create = (req, res, next) => {
 
 exports.show = (req, res, next) => {
 
+    let user = req.body;
     let id = req.params.id;
-    model.findById(id).populate('hostName', 'firstName lastName')
-    .then(event=>{
-        if(event){
-          return  res.render('./event/event.ejs', { event });
-        }else{
+
+    let user_id = req.session.user;
+    Promise.all([User.findById(user_id), model.findById(id).populate('hostName', 'firstName lastName')])
+    .then(result=>{
+        const [user, event]= result;
+        if(event && user){
+          return  res.render('./event/event.ejs', {user, event });
+        } else if(event){
+            return  res.render('./event/event.ejs', {event });  
+        }
+        else{
         let err = new Error('Cannot find a event with id '+ id);
         err.status=404;
         next(err);
-
         }
+
+        
     })
     .catch(err=>next(err))
     
