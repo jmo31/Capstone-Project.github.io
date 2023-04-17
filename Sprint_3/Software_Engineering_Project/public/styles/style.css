@@ -322,12 +322,29 @@ button[type=submit]{
     width: 60px;
     padding:  0.1em 0;
   }
-  
+/*   
   .user-form {
     display: grid;
     grid-template-columns: 110px 200px;
     row-gap: 0.5rem;
    
+  } */
+  
+
+
+  
+  .user-form {
+    display: grid;
+    grid-template-columns: 115px 600px;
+    width: 80%;
+    /* display: inline-block; */
+    row-gap: 0.5rem;
+    
+  }
+
+ #password , #email {
+
+  width: 484px;
   }
   
   
