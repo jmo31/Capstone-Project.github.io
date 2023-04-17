@@ -14,7 +14,7 @@ body {
    
   text-align: center;
   grid-template-rows: auto 1fr auto;
-    
+  background-color: darkgrey;
 }
 #enterDetails {float: left; width: 50%;  background-color: darkslategray; color: floralwhite;}
 #findDetails {float: left; width: 50%; background-color: floralwhite; color: darkslategray;}

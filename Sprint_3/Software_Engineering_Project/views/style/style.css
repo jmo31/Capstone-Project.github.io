@@ -9,12 +9,13 @@
   }
 
 body {
-    
+    width: 80%;
     background-color: #D7CEC7;
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
     font-family: 'Playfair Display', serif;
+
     
 }
  h1, h2, h3{
