@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto+Slab:wght@200&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+    width: 80%;
+    background-color: #D7CEC7;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    font-family: 'Playfair Display', serif;
+
+    
+}
+ h1, h2, h3{
+text-align: center;
+padding-top: 10px;
+
+}
+nav {
+    padding: 1rem;
+    color: white;
+    background-color: rgb(0, 66, 30);
+    display: inline;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    }
+   header{
+    color: white;
+    background-color: rgb(0, 66, 30);
+    padding-top:10px;
+   }
+   hr{
+    margin-top: 10px;
+   }
+.logo {
+
+    width: 250px;
+    height: 125px;
+}
+
+
+.nav-wrapper {
+    display: flex;
+    gap: 1rem;
+  }
+#logo {
+    padding-top: 15px; 
+    margin-right: 30px;
+    margin-right: auto;
+    float: left;
+}
+ nav a {
+    justify-content: space-between;
+    text-decoration: none;
+    padding: 0.4em;
+    color: white;  
+    font-size: 1.2rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+main {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.alert{
+    text-align: center;
+    padding:10px;
+    background:#79c879;
+    color:#fff;
+    margin-bottom:10px;
+    display:none;
+  }
+h1,h2,h3 {
+    text-align: center;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+   
+   }
+
+   footer {
+    color: white;
+    background-color: rgb(0, 66, 30);
+    text-align: center;
+   
+    padding: 1rem;
+}
+
+#image{
+   padding-top: 50px;
+    text-align: center;
+}
+
+
+button {
+    background-color: #0d6743;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    position: absolute;
+    top: 50%;
+}
+.wrapper {
+    text-align: center;
+}
+#wishlist-container {
+	width: 600px;
+	margin: 0 auto;
+}
+
+#add-item-form {
+	margin-top: 20px;
+}
+
+#item-name {
+	width: 300px;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+#add-item-button {
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	background-color: #4286f4;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+#add-item-button:hover {
+	background-color: #346dc5;
+}

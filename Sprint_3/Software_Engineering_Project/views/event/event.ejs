@@ -1,0 +1,30 @@
+
+<%- include('../partial/header.ejs')%>
+<main>
+  <div class="container">
+    <div class="image">
+  <h4><%= event.title%></h4>
+  </div> 
+  <div class="text"></div>
+    <!-- <form> 
+      <button type="submit" formmethod="GET" formaction="/events/<%= event.id%>/edit"> <img src="/images/edit.png" id="img"> </button>
+      <button  type="submit" formmethod="POST" formaction="/events/<%= event.id%>?_method=DELETE"><img src="/images/delete.png" id="delete"></button>
+     </form> -->
+     </div>
+    </div>
+     <div class="container">
+        <div class="image">
+          
+       <img src="<%= event.image%>" height="200" width="200">
+            </div>
+            <div class="text">
+              <p><strong>Author:</strong> <%= event.hostName.firstName + ' '+ event.hostName.lastName%></p><br>
+              <p><strong>Date and Time:</strong> <%= event.startDateTime%> - <%= event.endDateTime%></p><br>
+              <p><strong>Location:</strong> <%= event.location%></p><br>
+             <p><strong>Details</strong> <%= event.details%> </p>
+            </div>
+            </div>  
+  
+</main>
+<%- include('../partial/footersearch.ejs')%>
+<%- include('../partial/footer.ejs')%>
