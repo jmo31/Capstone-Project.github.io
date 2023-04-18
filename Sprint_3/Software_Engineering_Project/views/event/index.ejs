@@ -1,0 +1,33 @@
+
+<%- include('../partial/header.ejs')%>
+<main>
+  <% if(events.length){
+    categories.forEach(category=>{%>
+  
+      <h2><%= category %></h2>
+      <ul>
+        <% events.forEach(event =>{%>
+  
+          <% if(event.category ===category){%>
+            <ol class="event">
+              <li id="li"> <a href="/events/<%= event.id%>"><p>  <img src="<%= event.image%>" height="150" width="150"><%= event.title%></p></a></li>
+            </ol>
+         <% }
+
+        }); %>
+
+      </ul>
+     <%});
+  
+   }else{%>
+    <p>There are no stories to display</p>
+  <%} %>
+</main>
+
+<%- include('../partial/footersearch.ejs')%>
+    <%- include('../partial/footer.ejs')%>
+
+  
+
+
+

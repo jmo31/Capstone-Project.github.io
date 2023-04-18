@@ -1,0 +1,188 @@
+
+<script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDNXj8s9O4Yjp043ohXWzJOg39KzVbAZW8",
+        authDomain: "demos-d1a06.firebaseapp.com",
+        databaseURL: "https://demos-d1a06-default-rtdb.firebaseio.com",
+        projectId: "demos-d1a06",
+        storageBucket: "demos-d1a06.appspot.com",
+        messagingSenderId: "941392632723",
+        appId: "1:941392632723:web:cfefdaf28016182409a666"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+       
+    
+            import {getDatabase, ref, get, set, child, update, remove}
+            from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js"//Copy and Paste the URL from near the top of the CDN you pasted in from firebase
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+            import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+            // (the one where you imported "initializeApp" from),
+            //but change "firebase-app" to "firebase-database"
+            
+    
+            const db = getDatabase();
+            const auth = getAuth();
+           
+    
+            var enterID = document.querySelector("#enterID");
+            var enterName = document.querySelector("#enterName");
+            var enterTypes = document.querySelector("#enterTypes");
+            var enterAge = document.querySelector("#enterAge");
+            var enterSystem = document.querySelector("#enterSystem");
+    
+            var findID = document.querySelector("#findID");
+            var findName = document.querySelector("#findName");
+            var findTypes = document.querySelector("#findTypes");
+            var findAges = document.querySelector("#findAges");
+            var findSystem = document.querySelector("#findSystem");
+            var findImage = document.querySelector("#findImage");
+           
+    
+           
+          
+            var insertBtn = document.querySelector("#insert");
+            var updateBtn = document.querySelector("#update");
+            var removeBtn = document.querySelector("#remove");
+            var findBtn = document.querySelector("#find");
+    
+            function InsertData() {
+                set(ref(db, "People/"+ enterID.value),{
+                    Name: enterName.value,
+                    ID: enterID.value,
+                    Types: enterTypes.value,
+                    Age:enterAge.value,
+                    System:enterSystem.value
+                })
+                .then(()=>{
+                    alert("Data added successfully");
+                    
+                })
+                .catch((error)=>{
+                    alert(error);
+                });
+            }
+    
+            function FindData() {
+                const dbref = ref(db);
+    
+                get(child(dbref, "People/" + findID.value))
+                .then((snapshot)=>{
+                    if(snapshot.exists()){
+                        findName.innerHTML = "Genre of Game Selected: " + snapshot.val().Name;
+                        findTypes.innerHTML = "Time for Playing Games: " + snapshot.val().Types;
+                        findSystem.innerHTML = "Computer System Selected: " + snapshot.val().System;
+                        findAges.innerHTML = "You are " + snapshot.val().Age+ " years old";
+    
+                        if(snapshot.val().Name=='Sports' && snapshot.val().Age <=17){
+    
+                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+                          
+    
+                        }else if(snapshot.val().Name=='Sports' && snapshot.val().Age >17){
+    
+                         findPrice.innerHTML = "As a survey information you are "  + snapshot.val().Age+ " years old, which is greater than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+                       }
+                        else if(snapshot.val().Name=='Combat' && snapshot.val().Age <=17){
+                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+                       
+                        }else if(snapshot.val().Name=='Combat' && snapshot.val().Age >17){
+                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is greater than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+                        }
+
+                        else if(snapshot.val().Name=='Retro' && snapshot.val().Age <=17 ){
+                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+
+                        }
+                        else if(snapshot.val().Name=='Retro' && snapshot.val().Age >17 ){
+                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is greater than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+
+                        }
+                        else if(snapshot.val().Name=='Board game style' && snapshot.val().Age <=17){
+
+                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+                        
+                        }else if(snapshot.val().Name=='Board game style' && snapshot.val().Age >17){
+
+                        findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+
+                      }
+                        else if(snapshot.val().Name=='Cross-over fighting' && snapshot.val().Age <=17){
+                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+
+                        }else if(snapshot.val().Name=='First person shooter'){
+                            findPrice.innerHTML = "First person shooter: $" + 64;
+                        }else if(snapshot.val().Name=='Third person shooter'){
+                            findPrice.innerHTML = "Price for Third person shooter: $" + 56;
+    
+                        }
+    
+                    } else {
+                        alert("No data found");
+                    }
+                })
+                .catch((error)=>{
+                    alert(error)
+                })
+                
+            }
+    
+            function UpdateData(){
+                update(ref(db, "People/"+ enterID.value),{
+                    Name: enterName.value,
+                    Types: enterTypes.value
+                })
+                .then(()=>{
+                    alert("Data updated successfully");
+                })
+                .catch((error)=>{
+                    alert(error);
+                });
+            }
+    
+            function RemoveData(){
+                remove(ref(db, "People/"+ enterID.value))
+                .then(()=>{
+                    alert("Data deleted successfully");
+                })
+                .catch((error)=>{
+                    alert(error);
+                });
+            }
+    
+            insertBtn.addEventListener('click', InsertData);
+            updateBtn.addEventListener('click', UpdateData);
+            removeBtn.addEventListener('click', RemoveData);
+            findBtn.addEventListener('click', FindData);
+    
+    
+            document.getElementById("logout").addEventListener("click", function() {
+              signOut(auth).then(() => {
+                  // Sign-out successful.
+                  console.log('Sign-out successful.');
+                  alert('Sign-out successful.');
+                  document.getElementById('logout').style.display = 'none';
+    
+    
+                  setTimeout(function(){
+               window.location.assign("/sign");
+          },2000);
+                 
+                }).catch((error) => {
+                  // An error happened.
+                  console.log('An error happened.');
+                });		
+    
+          });
+    
+          </script>
+    
+    
+    </html>

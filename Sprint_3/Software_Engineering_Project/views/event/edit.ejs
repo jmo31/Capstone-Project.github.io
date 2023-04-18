@@ -1,0 +1,25 @@
+
+<%- include('../partial/header.ejs')%>
+
+    <main>
+        <form method = "POST"  enctype="multipart/form-data"  action = "/events/<%= event.id%>?_method=PUT" class="new-form">
+        <label for="category"> Category </label> 
+        <input type="text", id ="category"  value="<%= event.category%>" name="category" required><br><br>
+        <label for="title"> Game Title</label> 
+        <input type="text" id="title" value="<%= event.title%>" name="title" required=""> <br><br>
+        <!-- <label for="hostName"> Author:</label> 
+        <input type="text" id="hostName" value="<%= event.hostName%>" name="hostName" required=""> <br><br> -->
+        <label for="details"> Details</label> 
+        <input type="text" id="details" value="<%= event.details%>" name="details" required=""> <br><br>
+        <label for="location"> Where</label> 
+        <input type="text" id="location" value="<%= event.location%>" name="location" required=""> <br><br>
+        <label for="startDateTime"> Orginal Published Date</label> 
+        <input type="datetime-local" id="startDateTime" value="<%= event.startDateTime%>" name="startDateTime" required=""> <br><br>
+        <label for="endDateTime"> Updated or Edited date</label> 
+        <input type="datetime-local" id="endDateTime" name="endDateTime" value="<%= event.endDateTime%>" require=""> <br><br>
+        <label for="image">Image</label>
+        <input type="file" id="image" name="image" value="<%= event.image%>"  required=""><br><br>
+        <input type="submit" value="Submit" class="text"><br><br>
+         </form>
+    </main>
+    <%- include('../partial/footer.ejs')%>
