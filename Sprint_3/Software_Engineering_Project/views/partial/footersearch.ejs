@@ -83,44 +83,55 @@
     
                         if(snapshot.val().Name=='Sports' && snapshot.val().Age <=17){
     
-                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+                            findPrice.innerHTML = "Based on the survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " the game we recommend is NBA2k23 or Madden NFL 23";
                           
     
                         }else if(snapshot.val().Name=='Sports' && snapshot.val().Age >17){
     
-                         findPrice.innerHTML = "As a survey information you are "  + snapshot.val().Age+ " years old, which is greater than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+                         findPrice.innerHTML = "Based on the survey information you are "  + snapshot.val().Age+ " years old, which is greater than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " the game we recommend is PGA Tour 2k23";
                        }
                         else if(snapshot.val().Name=='Combat' && snapshot.val().Age <=17){
-                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+                            findPrice.innerHTML = "Based on the survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " the game we recommend is Lego Star Wars!";
                        
                         }else if(snapshot.val().Name=='Combat' && snapshot.val().Age >17){
-                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is greater than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+                            findPrice.innerHTML = "Based on the survey information you are "  + snapshot.val().Age+ " years old, which is greater than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " the game we recommend is WWE2K!";
                         }
 
                         else if(snapshot.val().Name=='Retro' && snapshot.val().Age <=17 ){
-                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+                            findPrice.innerHTML = "Based on the survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " the game we recommend is Mario!";
 
                         }
                         else if(snapshot.val().Name=='Retro' && snapshot.val().Age >17 ){
-                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is greater than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+                            findPrice.innerHTML = "Based on the survey information you are "  + snapshot.val().Age+ " years old, which is greater than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " the game we recommend is Mike Tyson's Punch Out!";
 
                         }
                         else if(snapshot.val().Name=='Board game style' && snapshot.val().Age <=17){
 
-                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+                            findPrice.innerHTML = "Based on the survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " the game we recommend is Monopoly!";
                         
                         }else if(snapshot.val().Name=='Board game style' && snapshot.val().Age >17){
 
-                        findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
+                        findPrice.innerHTML = "Based on the survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " the game we recommend is Chess!";
 
                       }
                         else if(snapshot.val().Name=='Cross-over fighting' && snapshot.val().Age <=17){
-                            findPrice.innerHTML = "Dependes on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " is ....";
-
-                        }else if(snapshot.val().Name=='First person shooter'){
-                            findPrice.innerHTML = "First person shooter: $" + 64;
-                        }else if(snapshot.val().Name=='Third person shooter'){
-                            findPrice.innerHTML = "Price for Third person shooter: $" + 56;
+                            findPrice.innerHTML = "Based on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " the game we recommend is Super Smash Bros!";
+                        }   
+                        else if(snapshot.val().Name=='Cross-over fighting' && snapshot.val().Age >17){
+                            findPrice.innerHTML = "Based on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " the game we recommend is Mortal Kombat!";
+                        }
+                        else if(snapshot.val().Name=='First person shooter' && snapshot.val().Age <=17){
+                            findPrice.innerHTML = "Based on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " the game we recommend is Minecraft!";
+                        }
+                        else if(snapshot.val().Name=='First person shooter' && snapshot.val().Age >17){
+                            findPrice.innerHTML = "Based on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " the game we recommend is Call of Duty!";
+                        }
+                        else if(snapshot.val().Name=='Third person shooter' && snapshot.val().Age <=17){
+                            findPrice.innerHTML = "Based on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " the game we recommend is Fortnite!";
+                        }
+                        else if(snapshot.val().Name=='Cross-over fighting' && snapshot.val().Age >17){
+                            findPrice.innerHTML = "Based on the your survey information you are "  + snapshot.val().Age+ " years old, which is less than 17 years therefore, the generes of game you selected "+ snapshot.val().Name + " the game we recommend is Player's Unknowns Battlegrounds!";
+                        
     
                         }
     
