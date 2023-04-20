@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const storySchema = new Schema({
     
-    category: {type: String, required: [true, 'category is required']},
+    category: {type: String, required: [true, 'category is required'], enum : [ "ACTION GAMES", "ADVENTURE GAMES", "ANIMAL GAMES","SPORTS GAMES", "SIMULATION GAMES", "PUZZLE GAMES", "MULTIPLAYER GAMES", "ART & CREATIVITY GAMES" ]},
     title: {type: String, required: [true, 'title is required']},
     hostName: {type: Schema.Types.ObjectId, ref: 'User'},
     startDateTime: {type: String, required: [true, 'startDateTime is required']},
