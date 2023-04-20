@@ -22,3 +22,6 @@ exports.sign = (req, res) => {
 exports.search = (req, res, next) => {
     res.render('search.ejs')
 }
+exports.register = (req, res) => {
+    res.render('registration.ejs')
+};
