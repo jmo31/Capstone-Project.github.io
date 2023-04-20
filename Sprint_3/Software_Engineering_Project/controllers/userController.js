@@ -45,7 +45,7 @@ exports.createLogin= (req, res, next)=>{
     .then(user => {
         if (!user) {
             console.log('wrong email address');
-            req.flash('error', 'wrong email address');  
+            req.flash('error', 'wrong userCredentials');  
             res.redirect('/users/login');
             } else {
             user.comparePassword(password)
@@ -55,7 +55,7 @@ exports.createLogin= (req, res, next)=>{
                     req.flash('success', 'You have successfully logged in');
                     res.redirect('/users/profile');
             } else {
-                req.flash('error', 'wrong password');      
+                req.flash('error', 'wrong userCredentials');      
                 res.redirect('/users/login');
             }
             });     
