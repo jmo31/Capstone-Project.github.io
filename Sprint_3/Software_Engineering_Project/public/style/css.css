@@ -1,24 +1,75 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-  }
 
-#body {
-  min-height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-   
-  text-align: center;
-  grid-template-rows: auto 1fr auto;
-    
+padding: 5px;
+
+}
+.headnav{
+  box-sizing: border-box;
+
+  margin:0;
+  padding: 0;
+
+  background-color: white;
+
+}
+
+.headnav li, .headnav a, .headnav button{
+  font-family: "Montserrat", sans-serif;
+
+  font-weight: 500;
+  font-size: 16px;
+  color:#ecf0f1;
+  text-decoration: none;
+}
+
+.headnav header{
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+  padding: 30px 10%;
+}
+
+.headnav .logos{
+  cursor :pointer;
+}
+
+.headnav .nav_link{
+  list-style: none;
+}
+.nav_link li{
+  display: inline-block;
+  padding: 0px 10px;
+
+}
+.nav_link li a{
+  transition: all 0.3s ease 0s;
+}
+.nav_link li a:hover{
+  color: lightgrey;
+  text-decoration: none;
+}
+
+.headnav button{
+  padding:9px 25px;
+  background-color: rgba(69, 69, 69, 1.0);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+.headnav button:hover{
+  background-color: rgba(69,69,69,0.8);
 }
 #mains{
   text-align: center;
-  margin-left: 200px;
+  margin: 200px;
 }
 #enterDetails {float: left; width: 50%;  background-color: darkslategray; color:floralwhite;}
 #findDetails {float: left; width: 50%; background-color: floralwhite; color: darkslategray;}
@@ -26,15 +77,15 @@ input {width: 120px;}
 nav {
     padding: 1rem;
     color: white;
-    background-color: rgb(0, 66, 30);
-    display: inline;
+    background-color:black;
+    display: inline-block;
     list-style: none;
     display: flex;
     gap: 1rem;
     }
    header{
     color: white;
-    background-color: rgb(0, 66, 30);
+    background-color: black;
     padding-top:10px;
    }
    hr{
@@ -46,7 +97,9 @@ nav {
     height: 125px;
 }
 
-
+.headnav li{
+  display: inline-block;
+}
 .nav-wrapper {
     display: flex;
     gap: 1rem;
@@ -68,6 +121,18 @@ nav {
 a{
     text-decoration: none;
 }
+a:hover{
+  text-decoration: none;
+  color:#79c879;
+}
+.headnav li, .headnav a, .headnav button{
+  font-family: "Montserrat", sans-serif;
+
+  font-weight: 500;
+  font-size: 16px;
+  color:#ecf0f1;
+  text-decoration: none;
+}
 
 
 main {
@@ -86,21 +151,14 @@ main {
     text-align: center;
 } */
 
-nav a{
-    text-decoration: none;
-    color: white;
-    font-size: 1.8rem;
-   
-   }
 
-   /* footer {
+   footer {
     color: white;
-    background-color: rgb(0, 66, 30);
-    text-align: center;
-     /* margin-top: 550px; */
-    /* padding: 1rem;
-   } */
-   */
+    background-color: black;
+    text-align: centerblack
+    
+    
+   } 
   .container{
     margin-bottom: 350px;
   }

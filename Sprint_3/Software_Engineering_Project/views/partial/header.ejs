@@ -11,15 +11,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/style/css.css">
-    <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="../../public/styles/header.css">
 
     
     <title>Software Project</title>
 </head>
-<body>
+<body class = "headnav">
     <header>
-        <ul class="bar">
-            <li id="logo"><a href="/"><img src="/images/gameCentralupdate.png" class="logo" alt="logos"></a></li>
+        <ul class="nav_link">
+            <li><img src="/images/gameCentralupdate.png" class="logos"></a></li>
             <li> <a href="/events/new">CreateWishGames</a></li>
             <li><a href="/search">Survey</a></li>
             <%if(!user){%>
@@ -30,9 +30,8 @@
            <li><a href='/users/logout'>Logout</a></li> 
            <% }%>
         </ul>
-        <hr>
         <nav>
-            <a href="/events">WishListsGame</a>  
+            <a href="/events"><button >Game List</button></a>  
     <%if(errorMessages.length>0){
         errorMessages.forEach(message=>{%>
             <div class="error"><%= message%></div>
