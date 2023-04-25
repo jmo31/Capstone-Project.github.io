@@ -1,7 +1,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
-
+p{
+  color: black;
+  padding:0;
+}
+.homepageclass{
+  padding-left: 25px;
+  width:500px;
+  height:300px;
+}
 * {
     box-sizing: border-box;
 
@@ -55,7 +63,16 @@ padding: 5px;
   color: lightgrey;
   text-decoration: none;
 }
+#insert{
+text-align: center;
+background-color: rgba(69, 69, 69, 1.0);
+}
+#update{
 
+}
+#remove{
+
+}
 .headnav button{
   padding:9px 25px;
   background-color: rgba(69, 69, 69, 1.0);
