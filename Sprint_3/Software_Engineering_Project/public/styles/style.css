@@ -145,6 +145,7 @@ a{
 }
 .event {
     list-style: none;
+    display: inline-block;
 }
 .event li {
     line-height: 2em;
