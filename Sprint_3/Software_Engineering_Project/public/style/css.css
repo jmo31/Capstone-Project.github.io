@@ -158,11 +158,16 @@ a:hover{
   color:#ecf0f1;
   text-decoration: none;
 }
-
+.separator{
+  color: black;
+  background-color: black;
+}
 
 main {
     margin-left: 100px;
     margin-right: 100px;
+
+    background-color:#EFEFEF ;
 }
 .alert{
     text-align: center;

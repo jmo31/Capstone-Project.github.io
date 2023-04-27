@@ -362,7 +362,7 @@ button[type=submit]{
 
   table, th, td, tr{
 
-    border: 1px solid #a28b2f;
+    border: 1px solid black;
     padding: .2em 1em .01em .5em;
     width: 90%; 
    

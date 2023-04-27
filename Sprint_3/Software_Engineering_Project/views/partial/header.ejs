@@ -21,7 +21,7 @@
         <a href="/"><img src="/images/gameCentralupdate.png" class="logos"></a>
         <ul class="nav_link">
             
-            <li> <a href="/events/new">CreateWishGames</a></li>
+            <li> <a href="/events/new">Add Wishlist Games</a></li>
             <li><a href="/search">Survey</a></li>
             <%if(!user){%>
             <li><a href='/users/new'>Sign Up</a> </li>
@@ -32,7 +32,7 @@
            <% }%>
         </ul>
         <nav>
-            <a href="/events"><button >Game List</button></a>  
+            <a href="/events"><button >All Games</button></a>  
     <%if(errorMessages.length>0){
         errorMessages.forEach(message=>{%>
             <div class="error"><%= message%></div>

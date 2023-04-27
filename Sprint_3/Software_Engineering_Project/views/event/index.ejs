@@ -5,12 +5,15 @@
     categories.forEach(category=>{%>
   
       <h2><%= category %></h2>
+      <hr class="separator">
       <ul>
         <% events.forEach(event =>{%>
   
+          
           <% if(event.category ===category){%>
+            
             <ol class="event">
-              <li id="li"> <a href="/events/<%= event.id%>"><p>  <img src="<%= event.image%>" height="150" width="150"><%= event.title%></p></a></li>
+              <li id="li"> <a href="/events/<%= event.id%>"><p>  <img src="<%= event.image%>" height="150" width="150"></p></a></li>
             </ol>
          <% }
 
