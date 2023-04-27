@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto+Slab:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 *{
     margin: 0;
     /* padding: 0; */
@@ -20,9 +21,8 @@ header {
     padding-bottom: 6px;
 }
 hr {
-    height: 3px;
-    border-color: rgb(175, 175, 26);
-    background-color: rgb(169, 169, 32);
+    height: 2px;
+    width:fit-content;
 }
 
 .logo {
@@ -98,7 +98,8 @@ nav a {
 main{
     margin-right: 100px;
     margin-left: 100px;
-    padding-top: 100px;
+    padding-top: 30px;
+    padding-left:20px;
     /* height: 90vh; */
     font-size: 18px;
 }
@@ -232,17 +233,20 @@ select {
     width: 90%;
     display: inline-block;
     padding: 12px;
-    border: 0px;
+    border-radius: 25px;
     color:whitesmoke;
+    font-family: "Montserrat", sans-serif;
 }
 input[type=submit] {
     padding: 12px;
-    background-color: #0d6743;
+    background-color: rgb(69,69,69);
     margin-left: 105px;
     display: inline-block;
     width: 80%;
     color: white;
     grid-template-rows: auto 1fr auto;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 25px;
 }
 #category {
     width: 80%;

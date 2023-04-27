@@ -14,7 +14,7 @@ p{
     box-sizing: border-box;
 
 padding: 5px;
-
+font-family: "Montserrat", sans-serif;
 }
 .headnav{
   box-sizing: border-box;
@@ -22,7 +22,7 @@ padding: 5px;
   margin:0;
   padding: 0;
 
-  background-color: white;
+  background-color: #333333;
 
 }
 
@@ -41,7 +41,7 @@ padding: 5px;
   justify-content: space-between;
 
   align-items: center;
-  padding: 30px 10%;
+  padding: 15px;
 }
 
 .headnav .logos{
@@ -58,6 +58,7 @@ padding: 5px;
 }
 .nav_link li a{
   transition: all 0.3s ease 0s;
+  font-size: 19px;
 }
 .nav_link li a:hover{
   color: lightgrey;
@@ -80,7 +81,7 @@ padding: 5px;
   padding:10px;
   background-color: rgba(69, 69, 69, 1.0);
   border: none;
-  border-radius: 50px;
+  border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease 0s;
   text-align: center;
@@ -150,17 +151,19 @@ a:hover{
   text-decoration: none;
   color:#79c879;
 }
-.headnav li, .headnav a, .headnav button{
-  font-family: "Montserrat", sans-serif;
 
-  font-weight: 500;
-  font-size: 16px;
-  color:#ecf0f1;
-  text-decoration: none;
-}
+
+
+
+
+
+
 .separator{
   color: black;
   background-color: black;
+  border-radius: 0%;
+  width: 97%;
+
 }
 
 main {

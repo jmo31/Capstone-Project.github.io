@@ -16,7 +16,7 @@ body {
  h1, h2, h3{
 text-align: center;
 padding-top: 10px;
-
+font-style:bold;
 }
 nav {
     padding: 1rem;
